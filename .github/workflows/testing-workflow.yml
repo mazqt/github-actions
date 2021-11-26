@@ -23,14 +23,14 @@ jobs:
         pipenv run nosetests
   review:
     needs: build
-    branches-ignore: 
-      -'master'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
       with:
+        branches-ignore: 
+          -'master'
         source_branch: ""
         destination_branch: "master"
         github_token: ${{ secrets.GITHUB_TOKEN }}
